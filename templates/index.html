@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/site-logo.ico')}}" type="image/x-icon">
+    <title>GraphEasy - Início</title>
+</head>
+<style>
+    #resetButton {
+        background-color: rgb(255, 58, 58);
+    }
+    #resetButton:hover {
+        background-color: rgb(211, 50, 50);
+    }
+</style>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-container" style="text-decoration: none;">
+                <h1 class="logo">GraphEasy</h1>
+            </a>
+            <nav>
+                <a href="/" title="Voltar para página inicial">Início</a>
+                <a href="/sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Calcular Raízes Quadráticas</h1>
+        <form action="/" method="post">
+            <label for="a">Coeficiente a:</label>
+            <input type="number" id="a" name="a" maxlength="100" placeholder="ax²" required>
+            <label for="b">Coeficiente b:</label>
+            <input type="number" id="b" name="b" maxlength="100" placeholder="bx" required>
+            <label for="c">Coeficiente c:</label>
+            <input type="number" id="c" name="c" maxlength="100" placeholder="c" required>
+            <input type="submit" value="Calcular">
+        </form>
+        {% if resultado %}
+            <div class="result" id="resultDiv">
+                <h2>Resultado:</h2>
+                {% if resultado != "A equação não possui raízes reais." %}
+                    <p>Raízes: {{ x1 }} e {{ x2 }}</p>
+                    <img src="{{ resultado }}" alt="">
+                    <button class="btn" onclick="download()" id="downloadButton">Baixar gráfico</button>
+                    <button class="btn" onclick="regenerate()" id="regenerateButton">Resetar Gráfico</button>
+                    <button class="btn" onclick="reset()" id="resetButton">Remover Resultados</button>
+                {% else %}
+                    <p style="color: rgb(250, 0, 0);">{{ resultado }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+        <p style="color: #cecece; font-size: 13px; top: 0;">Versão: {{ version }}</p>
+    </div>
+
+    <footer>
+        <a href="https://github.com/mazinn444" target="_blank" title="Github">
+            <img class="logo" src="{{ url_for('static', filename='assets/github-logo.png') }}" alt="">
+        </a>
+    </footer>
+</body>
+<script>
+    function download() {
+        var link = document.createElement('a')
+        link.href = '{{ resultado }}'
+        link.download = 'grafico.png'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }
+    function regenerate() {
+        window.location.reload()
+    }
+    function reset() {
+        var input = confirm("Você realmente deseja apagar os resultados?")
+        if (input) {
+            document.getElementById('resultDiv').innerHTML = ''
+        }
+    }
+</script>
+</html>

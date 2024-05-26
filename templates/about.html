@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/site-logo.ico')}}" type="image/x-icon">
+    <title>GraphEasy - Sobre</title>
+</head>
+<style>
+    main a {
+        color: #007bff;
+        text-decoration: none;
+        transition: .1s ease-out;
+    }
+    main a:hover {
+        color: #0056b3;
+    }
+
+    #more {
+        color: #007bff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        background: none;
+        border: none;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    #more:hover {
+        color: #0056b3;
+    }
+</style>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" style="text-decoration: none;">
+                <h1 class="logo">GraphEasy</h1>
+            </a>
+            <nav>
+                <a href="/" title="Voltar para página inicial">Início</a>
+                <a href="/sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h1  style="border-bottom: 1px solid black; padding-bottom: 10px;">Sobre</h1>
+        <main>
+            <p id="text" style="text-align: justify; line-height: 22px; border-bottom: 1px solid black; padding-bottom: 20px;">O site permite aos usuários calcular e visualizar gráficos de funções quadráticas de forma interativa. Eles inserem os coeficientes da função em um formulário e o site gera o gráfico correspondente. Além disso, possui páginas de erro personalizadas para melhorar a experiência do usuário. Com uma interface simples, é uma ferramenta conveniente para explorar funções quadráticas...<button id="more" onclick="showmoretext()">Saiba mais</button></p>
+            <p>Linguagens utilizadas: HTML, CSS, JavaScript e Python</p>
+            <p>Frameworks utilizados (Python): <a href="https://flask.palletsprojects.com/en/3.0.x/" target="_blank">Flask</a>, <a href="https://matplotlib.org/" target="_blank">Matplotlib</a> e <a href="https://numpy.org/" target="_blank">NumPy</a></p>
+            <p>Desenvolvido por: <a href="https://github.com/mazinn444" target="_blank">mazinn444</a></p>
+        </main>
+    </div>
+
+    <footer>
+        <a href="https://github.com/mazinn444" target="_blank" title="Github">
+            <img class="logo" src="{{ url_for('static', filename='assets/github-logo.png') }}" alt="">
+        </a>
+    </footer>
+</body>
+<script>
+    const text = document.getElementById('text')
+
+    function showlesstext() {
+        text.innerHTML = 'O site permite aos usuários calcular e visualizar gráficos de funções quadráticas de forma interativa. Eles inserem os coeficientes da função em um formulário e o site gera o gráfico correspondente. Além disso, possui páginas de erro personalizadas para melhorar a experiência do usuário. Com uma interface simples, o site oferece uma ferramenta conveniente para explorar funções quadráticas...<button id="more" onclick="showmoretext()">Saiba mais</button>'
+    }
+
+    function showmoretext() {
+        text.innerHTML = 'O site permite aos usuários calcular e visualizar gráficos de funções quadráticas de forma interativa. Eles inserem os coeficientes da função em um formulário e o site gera o gráfico correspondente. Além disso, possui páginas de erro personalizadas para melhorar a experiência do usuário. Com uma interface simples, o site oferece uma ferramenta conveniente para explorar funções quadráticas e suas propriedades, possibilitando aos usuários uma compreensão mais profunda e visualmente rica desses conceitos matemáticos fundamentais. <button id="more" onclick="showlesstext()">Saiba menos</button>'
+    }
+</script>
+</html>
