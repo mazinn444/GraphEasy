@@ -19,7 +19,7 @@ GraphEasy é uma aplicação web interativa desenvolvida com Flask que permite a
 
 1. Clone este repositório para o seu ambiente local:
     ```bash
-    git clone https://github.com/seu-usuario/GraphEasy.git
+    git clone https://github.com/mazinn444/GraphEasy.git
     ```
 2. Navegue até o diretório do projeto:
     ```bash
